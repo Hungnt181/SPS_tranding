@@ -1,0 +1,260 @@
+{
+    "data" : 
+        [
+            {
+              "Status": "Đang thực hiện",
+              "StatusCode": 100,
+              "DepartmentOrganization": {
+                "LookupId": 256,
+                "LookupValue": "KA-QTHT"
+              },
+              "Priority": 10,
+              "ID": "1",
+              "Title": "BGCT1111111.pdf",
+              "Created": "2024-10-28T09:54:00.547",
+              "Author": {
+                "Email": "test1@example.com",
+                "LookupId": 301,
+                "LookupValue": "User One"
+              }
+            },
+            {
+              "Status": "Hoàn thành",
+              "StatusCode": 200,
+              "DepartmentOrganization": {
+                "LookupId": 257,
+                "LookupValue": "KA-QLDT"
+              },
+              "Priority": 20,
+              "ID": "2",
+              "Title": "BGCT2222222.pdf",
+              "Created": "2024-10-29T08:15:00.847",
+              "Author": {
+                "Email": "test2@example.com",
+                "LookupId": 302,
+                "LookupValue": "User Two"
+              }
+            },
+            {
+              "Status": "Đang thực hiện",
+              "StatusCode": 100,
+              "DepartmentOrganization": {
+                "LookupId": 258,
+                "LookupValue": "KA-KD"
+              },
+              "Priority": 1,
+              "ID": "3",
+              "Title": "BGCT3333333.pdf",
+              "Created": "2024-10-30T11:45:00.347",
+              "Author": {
+                "Email": "test3@example.com",
+                "LookupId": 303,
+                "LookupValue": "User Three"
+              }
+            },
+            {
+              "Status": "Hoàn thành",
+              "StatusCode": 200,
+              "DepartmentOrganization": {
+                "LookupId": 259,
+                "LookupValue": "KA-NS"
+              },
+              "Priority": 30,
+              "ID": "4",
+              "Title": "BGCT4444444.pdf",
+              "Created": "2024-10-31T14:30:00.547",
+              "Author": {
+                "Email": "test4@example.com",
+                "LookupId": 304,
+                "LookupValue": "User Four"
+              }
+            },
+            {
+              "Status": "Đang thực hiện",
+              "StatusCode": 100,
+              "DepartmentOrganization": {
+                "LookupId": 260,
+                "LookupValue": "KA-MK"
+              },
+              "Priority": 10,
+              "ID": "5",
+              "Title": "BGCT5555555.pdf",
+              "Created": "2024-11-01T07:25:00.647",
+              "Author": {
+                "Email": "test5@example.com",
+                "LookupId": 305,
+                "LookupValue": "User Five"
+              }
+            },
+            {
+              "Status": "Hoàn thành",
+              "StatusCode": 200,
+              "DepartmentOrganization": {
+                "LookupId": 261,
+                "LookupValue": "KA-QLCL"
+              },
+              "Priority": 20,
+              "ID": "6",
+              "Title": "BGCT6666666.pdf",
+              "Created": "2024-11-02T10:10:00.947",
+              "Author": {
+                "Email": "test6@example.com",
+                "LookupId": 306,
+                "LookupValue": "User Six"
+              }
+            },
+            {
+              "Status": "Đang thực hiện",
+              "StatusCode": 100,
+              "DepartmentOrganization": {
+                "LookupId": 262,
+                "LookupValue": "KA-DVKH"
+              },
+              "Priority": 1,
+              "ID": "7",
+              "Title": "BGCT7777777.pdf",
+              "Created": "2024-11-03T09:40:00.547",
+              "Author": {
+                "Email": "test7@example.com",
+                "LookupId": 307,
+                "LookupValue": "User Seven"
+              }
+            },
+            {
+              "Status": "Hoàn thành",
+              "StatusCode": 200,
+              "DepartmentOrganization": {
+                "LookupId": 263,
+                "LookupValue": "KA-TH"
+              },
+              "Priority": 30,
+              "ID": "8",
+              "Title": "BGCT8888888.pdf",
+              "Created": "2024-11-04T13:20:00.247",
+              "Author": {
+                "Email": "test8@example.com",
+                "LookupId": 308,
+                "LookupValue": "User Eight"
+              }
+            },
+            {
+              "Status": "Đang thực hiện",
+              "StatusCode": 100,
+              "DepartmentOrganization": {
+                "LookupId": 264,
+                "LookupValue": "KA-CSKH"
+              },
+              "Priority": 10,
+              "ID": "9",
+              "Title": "BGCT9999999.pdf",
+              "Created": "2024-11-05T15:50:00.447",
+              "Author": {
+                "Email": "test9@example.com",
+                "LookupId": 309,
+                "LookupValue": "User Nine"
+              }
+            },
+            {
+              "Status": "Hoàn thành",
+              "StatusCode": 200,
+              "DepartmentOrganization": {
+                "LookupId": 265,
+                "LookupValue": "KA-KT"
+              },
+              "Priority": 20,
+              "ID": "10",
+              "Title": "BGCT1010101.pdf",
+              "Created": "2024-11-06T16:30:00.847",
+              "Author": {
+                "Email": "test10@example.com",
+                "LookupId": 310,
+                "LookupValue": "User Ten"
+              }
+            },
+            {
+              "Status": "Đang thực hiện",
+              "StatusCode": 100,
+              "DepartmentOrganization": {
+                "LookupId": 266,
+                "LookupValue": "KA-QTHT"
+              },
+              "Priority": 10,
+              "ID": "11",
+              "Title": "BGCT1111111.pdf",
+              "Created": "2024-11-07T08:30:00.123",
+              "Author": {
+                "Email": "test11@example.com",
+                "LookupId": 311,
+                "LookupValue": "User Eleven"
+              }
+            },
+            {
+              "Status": "Hoàn thành",
+              "StatusCode": 200,
+              "DepartmentOrganization": {
+                "LookupId": 267,
+                "LookupValue": "KA-QLDT"
+              },
+              "Priority": 20,
+              "ID": "12",
+              "Title": "BGCT1212121.pdf",
+              "Created": "2024-11-08T10:50:00.123",
+              "Author": {
+                "Email": "test12@example.com",
+                "LookupId": 312,
+                "LookupValue": "User Twelve"
+              }
+            },
+            {
+              "Status": "Đang thực hiện",
+              "StatusCode": 100,
+              "DepartmentOrganization": {
+                "LookupId": 268,
+                "LookupValue": "KA-KD"
+              },
+              "Priority": 1,
+              "ID": "13",
+              "Title": "BGCT1313131.pdf",
+              "Created": "2024-11-09T13:00:00.123",
+              "Author": {
+                "Email": "test13@example.com",
+                "LookupId": 313,
+                "LookupValue": "User Thirteen"
+              }
+            },
+            {
+              "Status": "Hoàn thành",
+              "StatusCode": 200,
+              "DepartmentOrganization": {
+                "LookupId": 269,
+                "LookupValue": "KA-NS"
+              },
+              "Priority": 30,
+              "ID": "14",
+              "Title": "BGCT1414141.pdf",
+              "Created": "2024-11-10T15:30:00.123",
+              "Author": {
+                "Email": "test14@example.com",
+                "LookupId": 314,
+                "LookupValue": "User Fourteen"
+              }
+            },
+            {
+              "Status": "Đang thực hiện",
+              "StatusCode": 100,
+              "DepartmentOrganization": {
+                "LookupId": 270,
+                "LookupValue": "KA-MK"
+              },
+              "Priority": 10,
+              "ID": "15",
+              "Title": "BGCT1515151.pdf",
+              "Created": "2024-11-11T17:45:00.123",
+              "Author": {
+                "Email": "test15@example.com",
+                "LookupId": 315,
+                "LookupValue": "User Fifteen"
+              }
+            }
+    ]
+}

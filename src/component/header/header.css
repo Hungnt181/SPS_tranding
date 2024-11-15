@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.header {
+    width: 100%;
+    height: 48px;
+    background-color: #464775;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerForm {
+    width: 24%;
+    height: 32px;
+}
+
+.headerForm form {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.headerForm form input {
+    /* background-color: rgba(255, 255, 255, 0.8); */
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+}
+
+.headerForm form button {
+    background-color: rgba(255, 255, 255, 0.8);
+    position: absolute;
+    top: 10px;
+    left: 34%;
+    border: none;
+    cursor: pointer;
+    color: #464775
+}
+
+.headerInfAcc{
+    /* width: 179px; */
+    height: 48px;
+    display: flex;
+    position: absolute;
+    right: 0;
+}
+.headerInfAcc_name {
+    color: #ffff;
+    font-size: 12px;
+    text-align: center;
+    line-height: 48px;
+}
+
+.headerInfAcc_img{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin: 8px 20px 8px 12px;
+}
+
+.headerInfAcc_img img {
+    width: 100%;
+    height: 100%;
+}
+
+
