@@ -1,6 +1,8 @@
 import {
   Add16Filled,
   CheckmarkCircle16Regular,
+  ChevronLeft20Regular,
+  ChevronRight20Regular,
   Delete16Regular,
   DocumentFolder20Filled,
   Filter20Filled,
@@ -9,8 +11,11 @@ import {
 import "./page.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-const HomePgae = () => {
-  const [data, setData] = useState([]);
+
+const HomePage = () => {
+  const [data, setData] = useState([]); // Dữ liệu từ API
+  const [currentPage, setCurrentPage] = useState(1); // Trang hiện tại
+  const [itemsPerPage] = useState(4); // Số bản ghi mỗi trang
 
   useEffect(() => {
     (async () => {
@@ -20,35 +25,45 @@ const HomePgae = () => {
         );
         setData(data.data);
         console.log(data.data);
-        // console.log(data.data.ID);
       } catch (error) {
         console.log(error);
       }
     })();
   }, []);
 
-  // Xét giá trị td
+  // Xét giá trị độ ưu tiên
   const priorityValue = (item) => {
-    if (item == 1) {
-      return "Thấp";
-    } else if (item == 10) {
-      return "Thường";
-    } else if (item == 20) {
-      return "Gấp";
-    } else {
-      return "Khẩn cấp";
-    }
+    if (item == 1) return "Thấp";
+    if (item == 10) return "Thường";
+    if (item == 20) return "Gấp";
+    return "Khẩn cấp";
   };
 
   const priorityClassName = (item) => {
-    if (item == 1) {
-      return "priorityOne";
-    } else if (item == 10) {
-      return "priorityTen";
-    } else if (item == 20) {
-      return "priorityTwenty";
-    } else {
-      return "priorityThirty";
+    if (item == 1) return "priorityOne";
+    if (item == 10) return "priorityTen";
+    if (item == 20) return "priorityTwenty";
+    return "priorityThirty";
+  };
+
+  // Tính toán dữ liệu hiển thị trên từng trang
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+
+  // Tổng số trang
+  const totalPages = Math.ceil(data.length / itemsPerPage);
+
+  // Chuyển trang bằng nút
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
     }
   };
 
@@ -62,7 +77,6 @@ const HomePgae = () => {
           <div className="toolBar_left_Title">Đề xuất</div>
           <div className="toolBar_left_Text">Danh sách</div>
         </div>
-
         <button>
           <span>
             <Add16Filled />
@@ -70,6 +84,7 @@ const HomePgae = () => {
           <span>Tạo đề xuất</span>
         </button>
       </div>
+
       <div className="contentOutlet_content">
         <div className="subToolBar">
           <div className="subToolBar_left">
@@ -103,12 +118,17 @@ const HomePgae = () => {
             </div>
           </div>
         </div>
+
         {/* content */}
         <div className="contentTable">
           <div className="table">
             <table>
               <thead>
-                <tr>
+                <tr
+                  style={{
+                    borderBottom: "1px solid #ddd",
+                  }}
+                >
                   <td>
                     <input type="checkbox" name="" id="" />
                   </td>
@@ -124,13 +144,20 @@ const HomePgae = () => {
                 </tr>
               </thead>
               <tbody>
-                {data.map((item, index) => (
+                {currentItems.map((item, index) => (
                   <tr key={index}>
                     <td>
                       <input type="checkbox" name="" id="" />
                     </td>
                     <td>{item.ID}</td>
-                    <td>{item.Title}</td>
+                    <td className="__table_titlePriorty">
+                      <div className="__table_title">{item.Title}</div>
+                      <div className={priorityClassName(item.Priority)}>
+                        {priorityValue(item.Priority)}
+                      </div>
+                    </td>
+
+                    <td>{item.DepartmentOrganization.LookupValue}</td>
                     <td>
                       <div
                         className={
@@ -142,19 +169,13 @@ const HomePgae = () => {
                           : "Hoàn thành"}
                       </div>
                     </td>
-                    <td>{item.DepartmentOrganization.LookupValue}</td>
-                    <td>
-                      <div className={priorityClassName(item.Priority)}>
-                        {priorityValue(item.Priority)}
-                      </div>
-                    </td>
                     <td>{item.Created}</td>
                     <td>{item.Author.LookupValue}</td>
                     <td>{item.Author.Email}</td>
                     <td>
-                      vsdfvsdvvvvvvvvvvv svvvvvvvvvvvvvv vvvvvvvvvvvvvvvvvv
-                      vvvvvvvvvvvvvvvvvvv vvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-                      vvvvvvvvvvv
+                      Contrary to popular belief, Lorem Ipsum is not simply
+                      random text. It has roots in a piece of classical Latin
+                      literature from 45 BC, making it over 2000 years old.{" "}
                     </td>
                   </tr>
                 ))}
@@ -162,9 +183,50 @@ const HomePgae = () => {
             </table>
           </div>
         </div>
+
+        {/* Pagination */}
+        <div className="pagination">
+          <div className="indexOfPage">
+            <span style={{ fontSize: "14px", display: "flex" }}>
+              <p style={{ marginRight: "4px" }}>Hiển thị</p>
+              {indexOfFirstItem + 1}-{Math.min(indexOfLastItem, data.length)}
+              <p style={{ marginRight: "4px", marginLeft: "4px" }}>/</p>
+              Tổng {data.length} bản ghi
+            </span>
+          </div>
+          <div className="paginationBtn">
+            <button
+              onClick={handlePreviousPage}
+              disabled={currentPage === 1}
+              style={{
+                background: "none",
+                border: "none",
+                marginRight: "10px",
+                padding: "5px 10px",
+                cursor: currentPage === 1 ? "not-allowed" : "pointer",
+              }}
+            >
+              <ChevronLeft20Regular />
+            </button>
+
+            <button
+              onClick={handleNextPage}
+              disabled={currentPage === totalPages}
+              style={{
+                background: "none",
+                border: "none",
+                marginLeft: "10px",
+                padding: "5px 10px",
+                cursor: currentPage === totalPages ? "not-allowed" : "pointer",
+              }}
+            >
+              <ChevronRight20Regular />
+            </button>
+          </div>
+        </div>
       </div>
     </>
   );
 };
 
-export default HomePgae;
+export default HomePage;

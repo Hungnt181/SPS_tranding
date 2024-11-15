@@ -8,7 +8,7 @@
 }
 
 .content_oulet {
-    width: 90%;
+    width: calc(100% - 394px);
     height: calc(100vh - 48px);
     /* background-color: brown; */
 }
