@@ -25,11 +25,39 @@ const HomePage = () => {
         );
         setData(data.data);
         console.log(data.data);
+        // console.log(data.data.Author);
       } catch (error) {
         console.log(error);
       }
     })();
   }, []);
+
+  // const resultName = "";
+  const colorStyles = [
+    { backgroundColor: "#ffadad", color: "#5c0000" },
+    { backgroundColor: "#ffd6a5", color: "#5c2900" },
+    { backgroundColor: "#fdffb6", color: "#5c5c00" },
+    { backgroundColor: "#caffbf", color: "#005c00" },
+    { backgroundColor: "#9bf6ff", color: "#00385c" },
+    { backgroundColor: "#a0c4ff", color: "#00245c" },
+    { backgroundColor: "#bdb2ff", color: "#2d005c" },
+    { backgroundColor: "#ffc6ff", color: "#5c0054" },
+    { backgroundColor: "#f0f0f0", color: "#5c5c5c" },
+    { backgroundColor: "#e8e8e8", color: "#4c4c4c" },
+  ];
+  // Get Name create Avatar
+  const getName = (item) => {
+    if (!item) return "";
+    const words = item.trim().split(" ");
+    const filstWord = words[0]?.[0]?.toUpperCase() || "";
+    const lasttWord = words[words.length - 1]?.[0]?.toUpperCase() || "";
+    return `${filstWord}${lasttWord}`;
+  };
+
+  const setCss = (item) => {
+    const lastNumber = item % 10;
+    return colorStyles[lastNumber];
+  };
 
   // Xét giá trị độ ưu tiên
   const priorityValue = (item) => {
@@ -170,7 +198,18 @@ const HomePage = () => {
                       </div>
                     </td>
                     <td>{item.Created}</td>
-                    <td>{item.Author.LookupValue}</td>
+                    <td style={{ display: "flex", alignItems: "center" }}>
+                      <div
+                        style={setCss(item.Author.LookupId)}
+                        className="avtarName"
+                      >
+                        {getName(item.Author.LookupValue)}
+                      </div>
+                      {item.Author.LookupValue}
+                      {/* <div style={getLastDigit(item.Author.LookupId)} >
+                        {item.Author.LookupId}
+                      </div> */}
+                    </td>
                     <td>{item.Author.Email}</td>
                     <td>
                       Contrary to popular belief, Lorem Ipsum is not simply
