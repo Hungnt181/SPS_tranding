@@ -1,5 +1,6 @@
 import {
   Add16Filled,
+  Calendar16Filled,
   CheckmarkCircle16Regular,
   ChevronLeft20Regular,
   ChevronRight20Regular,
@@ -54,6 +55,14 @@ const HomePage = () => {
     return `${filstWord}${lasttWord}`;
   };
 
+  const getName_PB = (item) => {
+    if (!item) return "";
+    const words = item.trim().split("-");
+    const filstWord = words[0]?.[0]?.toUpperCase() || "";
+    const lasttWord = words[words.length - 1]?.[0]?.toUpperCase() || "";
+    return `${filstWord}${lasttWord}`;
+  };
+
   const setCss = (item) => {
     const lastNumber = item % 10;
     return colorStyles[lastNumber];
@@ -95,6 +104,17 @@ const HomePage = () => {
     }
   };
 
+  // FormatTime
+  const formatTime = (time) => {
+    const date = new Date(time);
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const hours = date.getHours().toString().padStart(2, "0");
+    const minutes = date.getMinutes().toString().padStart(2, "0");
+
+    return `${day}/${month} ${hours}:${minutes}`;
+  };
+
   return (
     <>
       <div className="toolBar">
@@ -134,7 +154,7 @@ const HomePage = () => {
               <span>
                 <Filter20Filled />
               </span>
-              <span>Lọc</span>
+              <span style={{ color: "#424242" }}>Lọc</span>
             </div>
             <div className="__right_Item">
               <form action="">
@@ -158,34 +178,50 @@ const HomePage = () => {
                   }}
                 >
                   <td>
-                    <input type="checkbox" name="" id="" />
+                    <input
+                      type="checkbox"
+                      name=""
+                      id=""
+                      className="check_Box"
+                    />
                   </td>
-                  <td>Mã ID</td>
-                  <td>Tiêu đề</td>
-                  <td>Trạng thái</td>
-                  <td>Bộ phận</td>
-                  <td>Độ ưu tiên</td>
-                  <td>Ngày tạo</td>
-                  <td>Tác giả</td>
-                  <td>Email</td>
-                  <td>Action</td>
+                  <td className="thead_td" style={{ width: "500px" }}>
+                    Tiêu đề
+                  </td>
+                  <td className="thead_td">Trạng thái</td>
+                  <td className="thead_td">Phòng ban đề xuất</td>
+                  <td className="thead_td">Người tạo</td>
+                  <td className="thead_td">Email</td>
+                  <td className="thead_td">Ngày tạo</td>
                 </tr>
               </thead>
               <tbody>
                 {currentItems.map((item, index) => (
                   <tr key={index}>
                     <td>
-                      <input type="checkbox" name="" id="" />
+                      <input
+                        type="checkbox"
+                        name=""
+                        id=""
+                        className="check_Box"
+                      />
                     </td>
-                    <td>{item.ID}</td>
                     <td className="__table_titlePriorty">
-                      <div className="__table_title">{item.Title}</div>
-                      <div className={priorityClassName(item.Priority)}>
+                      <div
+                        className=" tooltip-text"
+                        style={{ flex: "1" }}
+                        title={item.Title}
+                      >
+                        {item.Title}
+                      </div>
+                      <div
+                        className={priorityClassName(item.Priority)}
+                        style={{ maxWidth: "100px" }}
+                      >
                         {priorityValue(item.Priority)}
                       </div>
                     </td>
 
-                    <td>{item.DepartmentOrganization.LookupValue}</td>
                     <td>
                       <div
                         className={
@@ -197,7 +233,29 @@ const HomePage = () => {
                           : "Hoàn thành"}
                       </div>
                     </td>
-                    <td>{item.Created}</td>
+
+                    <td>
+                      <div style={{ display: "flex", alignItems: "center" }}>
+                        <div
+                          style={setCss(item.DepartmentOrganization.LookupId)}
+                          className="avtarNamePB"
+                        >
+                          {getName_PB(item.DepartmentOrganization.LookupValue)}
+                        </div>
+                        <div
+                          style={{ marginLeft: "8px" }}
+                          className="namePB  td_tooltip"
+                        >
+                          <span
+                            className="tooltip-text"
+                            title={item.DepartmentOrganization.LookupValue}
+                          >
+                            {item.DepartmentOrganization.LookupValue}
+                          </span>
+                        </div>
+                      </div>
+                    </td>
+
                     <td style={{ display: "flex", alignItems: "center" }}>
                       <div
                         style={setCss(item.Author.LookupId)}
@@ -205,16 +263,38 @@ const HomePage = () => {
                       >
                         {getName(item.Author.LookupValue)}
                       </div>
-                      {item.Author.LookupValue}
-                      {/* <div style={getLastDigit(item.Author.LookupId)} >
-                        {item.Author.LookupId}
-                      </div> */}
+
+                      <div className="nameAuthor td_tooltip">
+                        <span
+                          className="tooltip-text"
+                          title={item.Author.LookupValue}
+                        >
+                          {item.Author.LookupValue}
+                        </span>
+                      </div>
                     </td>
-                    <td>{item.Author.Email}</td>
                     <td>
-                      Contrary to popular belief, Lorem Ipsum is not simply
-                      random text. It has roots in a piece of classical Latin
-                      literature from 45 BC, making it over 2000 years old.{" "}
+                      <div className="td_tooltip">
+                        <span
+                          className="tooltip-text"
+                          title={item.Author.Email}
+                        >
+                          {item.Author.Email}
+                        </span>
+                      </div>
+                    </td>
+                    <td style={{ display: "flex", alignItems: "center" }}>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          color: "#585A96",
+                          marginRight: "8px",
+                        }}
+                      >
+                        <Calendar16Filled />
+                      </div>
+                      <span>{formatTime(item.Created)}</span>
                     </td>
                   </tr>
                 ))}
@@ -227,9 +307,17 @@ const HomePage = () => {
         <div className="pagination">
           <div className="indexOfPage">
             <span style={{ fontSize: "14px", display: "flex" }}>
-              <p style={{ marginRight: "4px" }}>Hiển thị</p>
+              <p style={{ marginRight: "4px", color: "#424242" }}>Hiển thị</p>
               {indexOfFirstItem + 1}-{Math.min(indexOfLastItem, data.length)}
-              <p style={{ marginRight: "4px", marginLeft: "4px" }}>/</p>
+              <p
+                style={{
+                  marginRight: "4px",
+                  marginLeft: "4px",
+                  color: "#424242",
+                }}
+              >
+                /
+              </p>
               Tổng {data.length} bản ghi
             </span>
           </div>

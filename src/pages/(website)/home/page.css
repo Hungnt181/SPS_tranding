@@ -4,13 +4,14 @@
 }
 /* toolBar */
 .toolBar {
-    width: 100%;
-    height: 47px;
+    width: calc(100% - 4px);
+    height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #F5F5F5;
     border-bottom: 1px solid #e6e4e4;
+    margin-left: 4px;
 }
 .toolBar_left {
     height: 100%;
@@ -36,11 +37,21 @@
     margin-left: 12px;
     font-weight: bold;
     font-size: 18px;
+    color: #242424;
 }
 .toolBar_left_Text{
     font-weight: 600;
     font-size: 14px;
+    width: 66px;
+    padding: 0 3px;
+    height: 60px;
+    line-height: 60px;
     border-bottom: 2px solid #6264A6;
+    color: #242424;
+    cursor: pointer;
+}
+.toolBar_left_Text:hover {
+    background-color: #ffffff;
 }
 
 .toolBar > button {
@@ -55,7 +66,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0px 5px 11px gray;
+    box-shadow:0px 4px 8px rgb(195, 194, 194);
 }
 .toolBar > button > span {
     font-size: 14px;
@@ -68,18 +79,19 @@
 /* contentOutlet_content / subToolBar */
 
 .contentOutlet_content {
-    height: calc(100% - 47px);
+    height: calc(100% - 59px);
 }
 
 /* subtoolbar */
 .subToolBar{
-    width: calc(100% - 40px);
+    width: calc(100% - 44px);
     height: 48px;
     background-color: #F5F5F5;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
+    margin-left: 4px;
 }
 .subToolBar_left, .subToolBar_right {
     display: flex;
@@ -93,9 +105,12 @@
 .__right_Item span {
     font-size: 14px;
     margin-right: 4px;
+    color: #242424;
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
+
 
 .__right_Item > form {
     width: 210px;
@@ -109,6 +124,7 @@
     width: 100%;
     height: 100%;
     font-size: 14px;
+    color: #242424;
     padding-left: 12px;
     border: none;
 }
@@ -159,33 +175,68 @@
     border-collapse: collapse;
 }
 
- thead{
-    width: 100%;
-    height: 50px;
-}
+
+
 
 .table tbody tr {
     border-bottom: 1px solid #d2d1d1;
+    height: 56px;
 }
   
 
 td {
-    height: 50px;
+    height: 56px;
     padding-left: 10px;
-    max-width: 250px;      /* Đặt độ rộng tối đa cho text */
-    white-space: nowrap;    /* Không cho text xuống dòng */
-    overflow: hidden;       /* Ẩn phần text tràn */
-    text-overflow: ellipsis; /* Hiển thị dấu ba chấm cho phần text tràn */
+    font-size: 14px;
+    color: #242424;
+    padding-right: 10px;
+   
 }
 
+ tbody  tr:hover {
+    background-color: #ededed;
+}
+
+/* Data truncate */
+
+/*  */
+.td_tooltip{
+    position: relative ;
+    cursor: pointer;
+    max-width: 100%
+    /* display: inline-block; */
+}
+.tooltip-text {
+    max-width:  400px;     /* Đặt độ rộng tối đa cho text */
+    white-space: nowrap;    /* Không cho text xuống dòng */
+    overflow: hidden;       /* Ẩn phần text tràn */
+    text-overflow: ellipsis;
+    display: inline-block;
+}
+
+
+thead{
+    width: 100%;
+    height: 50px;
+    color: #242424;
+}
+
+.thead_td {
+    font-size: 12px;
+}
+
+thead tr td {
+    height: 50px;
+}
 
 .priorityThirty,.priorityTwenty,.priorityTen,.priorityOne {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 40px;
-    width: 30%;
-    height: 60%;
+    border-radius: 30px;
+    font-size: 12px;
+    padding: 2px 8px;
+    height: 20px;
 }
 .priorityThirty {
     color: red;
@@ -210,12 +261,18 @@ padding: 2px;
 padding-left: 5px;
 } 
 .toDo {
-    background-color: #cacbd5;
-    color: #6264A6;
+    background-color: #F4F4FC;
+    color: #6264A7;
+    font-size: 14px;
+    font-weight: 600;
+    padding-left: 10px;
 }
 .completed {
-    background-color: #cad5cb;
-    color: #17a80d;
+    background-color: #E7F8D1;
+    color: #107C10;
+    font-size: 14px;
+    font-weight: 600;
+    padding-left: 10px;
 }
 
 .pagination {
@@ -228,22 +285,30 @@ padding-left: 5px;
 }
 
 .__table_titlePriorty {
+    width: 500px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    flex: 1;
 }
    
+.check_Box {
+    width: 16px;
+    height: 16px;
+}
 
-.avtarName {
+.avtarName, .avtarNamePB {
     width: 32px;
     height: 32px;
+    border-radius: 50%;
     border: none; 
-    border-radius: 4px;
     font-size: 12px;
     text-align: center;
     line-height: 32px;
     font-weight: 600;
-    /* background-color: #6264A6;
-    color: #FFF; */
     margin-right: 4px;
+}
+
+.avtarNamePB {
+    border-radius: 4px;
 }

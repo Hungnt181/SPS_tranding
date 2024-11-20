@@ -1,16 +1,21 @@
 import {
   Add16Regular,
+  Alert24Filled,
   Alert24Regular,
-  CaretDown16Filled,
+  ApprovalsApp24Filled,
+  ApprovalsApp24Regular,
+  CaretDown12Filled,
+  CaretRight12Filled,
   DocumentFolder24Filled,
+  DocumentFolder24Regular,
   Filter16Regular,
   MoreHorizontal24Filled,
+  Poll24Filled,
   Poll24Regular,
   QuestionCircle24Regular,
   Settings24Regular,
 } from "@fluentui/react-icons";
 import "./sidebar.css";
-import { SurveyIcon } from "@fluentui/react-icons-northstar";
 import { useState } from "react";
 
 const Sidebar = () => {
@@ -35,7 +40,7 @@ const Sidebar = () => {
 
   // Thay đổi trạng thái active của thẻ li
 
-  const [indexLi, setindexLi] = useState(null);
+  const [indexLi, setindexLi] = useState(["item1_1", "item2_1"]);
 
   const menuItem1 = [
     { id: "item1_1", title: "Tất cả", alert: null },
@@ -50,6 +55,11 @@ const Sidebar = () => {
     { id: "item2_3", title: "Đã xử lý", alert: null },
   ];
 
+  const handleClick = (newItem1, newItem2) => {
+    setindexLi([newItem1, newItem2]);
+    console.log(indexLi);
+  };
+
   return (
     <div className="sidebar">
       <div className="sidebarMenu">
@@ -63,7 +73,11 @@ const Sidebar = () => {
             onClick={() => changeCSS("notification")}
           >
             <div className="sidebarMenu_icon">
-              <Alert24Regular />
+              {activeItem === "notification" ? (
+                <Alert24Filled />
+              ) : (
+                <Alert24Regular />
+              )}
             </div>
             <p className="sidebarMenu_text">Thông báo</p>
           </div>
@@ -77,7 +91,11 @@ const Sidebar = () => {
             onClick={() => changeCSS("dashboard")}
           >
             <div className="sidebarMenu_icon">
-              <Poll24Regular />
+              {activeItem === "dashboard" ? (
+                <Poll24Filled />
+              ) : (
+                <Poll24Regular />
+              )}
             </div>
             <p className="sidebarMenu_text">Dashboard</p>
           </div>
@@ -91,7 +109,11 @@ const Sidebar = () => {
             onClick={() => changeCSS("process")}
           >
             <div className="sidebarMenu_icon">
-              <SurveyIcon />
+              {activeItem === "process" ? (
+                <ApprovalsApp24Filled />
+              ) : (
+                <ApprovalsApp24Regular />
+              )}
             </div>
             <p className="sidebarMenu_text">Quy trình</p>
           </div>
@@ -103,7 +125,11 @@ const Sidebar = () => {
             onClick={() => changeCSS("bgct")}
           >
             <div className="sidebarMenu_icon">
-              <DocumentFolder24Filled />
+              {activeItem === "bgct" ? (
+                <DocumentFolder24Filled />
+              ) : (
+                <DocumentFolder24Regular />
+              )}
             </div>
             <p className="sidebarMenu_text">BGCT</p>
           </div>
@@ -149,7 +175,11 @@ const Sidebar = () => {
               }}
             >
               <span>
-                <CaretDown16Filled />
+                {isMenu.menu1 == true ? (
+                  <CaretDown12Filled />
+                ) : (
+                  <CaretRight12Filled />
+                )}
               </span>
               <span className="_contentBox__menuTitle">Chứng từ</span>
             </div>
@@ -162,8 +192,8 @@ const Sidebar = () => {
               {menuItem1.map((item, index) => (
                 <li
                   key={index}
-                  className={indexLi == item.id ? "active" : ""}
-                  onClick={() => setindexLi(item.id)}
+                  className={indexLi[0] == item.id ? "active" : ""}
+                  onClick={() => handleClick(item.id, indexLi[1])}
                 >
                   <a href="#">
                     <span>{item.title}</span>
@@ -188,7 +218,11 @@ const Sidebar = () => {
               }}
             >
               <span>
-                <CaretDown16Filled />
+                {isMenu.menu2 == true ? (
+                  <CaretDown12Filled />
+                ) : (
+                  <CaretRight12Filled />
+                )}
               </span>
               <span className="_contentBox__menuTitle">Đề xuất</span>
             </div>
@@ -201,8 +235,8 @@ const Sidebar = () => {
               {menuItem2.map((item, index) => (
                 <li
                   key={index}
-                  className={indexLi == item.id ? "active" : ""}
-                  onClick={() => setindexLi(item.id)}
+                  className={indexLi[1] == item.id ? "active" : ""}
+                  onClick={() => handleClick(indexLi[0], item.id)}
                 >
                   <a href="#">
                     <span>{item.title}</span>

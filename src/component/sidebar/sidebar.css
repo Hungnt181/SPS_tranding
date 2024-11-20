@@ -13,6 +13,7 @@
     width: 68px;
     position: relative;
     height: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .sidebarMenu_item{
@@ -20,6 +21,27 @@
     height: 56px;
     margin-left: 2px;
     padding: 2px;
+    position: relative;
+}
+ /* xử lý code */
+ .sidebarMenu_item:hover {
+    width: 68px;
+    height: 56px;
+    color: #6264A7;
+    position: relative;
+    margin-left: 2px;
+    padding: 2px;
+ }
+.sidebarMenu_item:hover::before {
+    display: block;
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    height: 90%;
+    width: 2px; /* độ rộng của border */
+    background-color: #6264A7; /* màu của border */
+    border-radius: 20px; /* bo tròn */
 }
 
 .sidebarMenu_itemCss {
@@ -59,6 +81,7 @@
     text-align: center;
     cursor: pointer;
     padding-bottom: 6px;
+    color: #616161;
 }
 
 .sidebarMenu_top{
@@ -80,6 +103,7 @@
     width: 326px;
     height: 100%;
     background-color: #F0F0F0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .sidebarTreeMenu_header {
@@ -88,6 +112,7 @@
     display: flex;
     align-items:center;
     justify-content: space-between;
+    border-bottom: 1px solid #EBEBEB;
 }
 .sidebarTreeMenu_header_btn{
     margin-right: 20px;
@@ -97,11 +122,13 @@
 }
 .sidebarTreeMenu_header h2 {
     padding-left: 20px;
-    font-size: 24px;
+    font-size: 18px;
+    color: #242424;
 }
 
 .sidebarTreeMenu_header button {
     border: none;
+    cursor: pointer;
 }
 
 /* content */
@@ -116,7 +143,8 @@
 }
 ._contentBox__title span{
     margin-left: 5px;
-    font-size: 16px;
+    font-size: 14px;
+    color: #424242;
 }
 ._contentBox__menu {
     margin:0 10px;
@@ -145,9 +173,10 @@
 ._contentBox__menu li >a {
     text-decoration: none;
     color: #000000;
+    font-size: 14px;
 }
 
-.active {
+.active, ._contentBox__menu li:hover {
     background-color: #fff;
     border-radius: 4px;
     font-weight: 600;
